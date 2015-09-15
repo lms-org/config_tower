@@ -1,3 +1,12 @@
 [submodule "LMS"]
 	path = LMS
 	url = https://github.com/Phibedy/LMS
+[submodule "external/libraries/imaging"]
+	path = external/libraries/imaging
+	url = https://github.com/lms-org/imaging.git
+[submodule "external/modules/camera_importer"]
+	path = external/modules/camera_importer
+	url = https://github.com/lms-org/camera_importer.git
+[submodule "external/modules/ueye_importer"]
+	path = external/modules/ueye_importer
+	url = https://github.com/lms-org/ueye_importer.git
