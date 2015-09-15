@@ -10,3 +10,6 @@
 [submodule "external/modules/ueye_importer"]
 	path = external/modules/ueye_importer
 	url = https://github.com/lms-org/ueye_importer.git
+[submodule "external/libraries/math_lib"]
+	path = external/libraries/math_lib
+	url = https://www.github.com/lms-org/math_lib.git
