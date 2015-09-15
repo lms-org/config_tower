@@ -4,7 +4,7 @@ config-repo for trying out opencv. Execute opencv.sh to install opencv on ubuntu
 
 
 ###TODO
- * convert Image from [imaging](github.com/lms-org/imaging)
+ * convert Image from [imaging](github.com/lms-org/imaging) into opencv image
  * face
    * detection: http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0
    * tracking: https://www.youtube.com/watch?v=WfdYYNamHZ8
