@@ -1,0 +1,18 @@
+<framework>
+	<execution>
+		<clock enabled="true" unit="hz" value="100" />
+	</execution>
+	<modulesToEnable>
+		<module logLevel="WARN">camera_importer</module>
+		<module logLevel="WARN">opencv_face_detector</module>
+	</modulesToEnable>
+	<module>
+		<name>camera_importer</name>
+		<config src="camera_importer.lconf"/>
+	</module>
+	<module>
+		<name>opencv_face_detector</name>
+	    <channelMapping from="IMAGE" to="IMAGE"/>
+	</module>
+	<include src="basis.xml" />
+</framework>
