@@ -17,8 +17,8 @@ namespace lms_opencv {
 bool FaceDetector::initialize(){
     input = datamanager()->readChannel<lms::imaging::Image>(this,"IMAGE");
     std::string configDir = lms::Framework::configsDirectory;
-    if( !face_cascade.load(configDir+"/"+ face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
-    if( !eyes_cascade.load(configDir+"/"+ eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
+    if( !face_cascade.load(configDir+"/"+ face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return false; };
+    if( !eyes_cascade.load(configDir+"/"+ eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return false; };
     return true;
 }
 
