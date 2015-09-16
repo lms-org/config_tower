@@ -16,7 +16,7 @@ namespace lms_opencv {
 class FaceDetector : public lms::Module {
 public:
 
-    const lms::imaging::Image input;
+    const lms::imaging::Image *input;
 
     bool initialize();
     bool deinitialize();
@@ -26,7 +26,7 @@ public:
     void detectAndDisplay( cv::Mat frame );
 
 
-    void convertImage(cv::Mat output,const lms::imaging::Image input);
+    void convertImage(cv::Mat output,const lms::imaging::Image* input);
 };
 
 }  // namespace lms_opencv

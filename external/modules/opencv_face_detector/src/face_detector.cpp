@@ -15,7 +15,7 @@ std::string window_name = "Capture - Face detection";
 namespace lms_opencv {
 
 bool FaceDetector::initialize(){
-    input = datamanager()->readChannel(this,"IMAGE");
+    input = datamanager()->readChannel<lms::imaging::Image>(this,"IMAGE");
     if( !face_cascade.load( face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
     if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
     return true;
@@ -40,11 +40,11 @@ bool FaceDetector::cycle () {
     return true;
 }
 
-void FaceDetector::convertImage(cv::Mat output,const lms::imaging::Image input){
-    int width = input.width();
-    int height = input.height();
+void FaceDetector::convertImage(cv::Mat output,const lms::imaging::Image *input){
+    int width = input->width();
+    int height = input->height();
 
-    output(cv::Size(width,height),CV_8UC1,input.data(),cv::Mat::AUTO_STEP);
+    output(cv::Size(width,height),CV_8UC1,input->data(),cv::Mat::AUTO_STEP);
 }
 
 /** @function detectAndDisplay */
