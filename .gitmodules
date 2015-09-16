@@ -13,3 +13,6 @@
 [submodule "external/libraries/math_lib"]
 	path = external/libraries/math_lib
 	url = https://www.github.com/lms-org/math_lib.git
+[submodule "external/modules/image_converter"]
+	path = external/modules/image_converter
+	url = https://github.com/lms-org/image_converter.git
