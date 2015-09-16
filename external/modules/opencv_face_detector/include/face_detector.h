@@ -1,14 +1,16 @@
-
-// What is that? #pragma once
+#ifndef OPENCV_FACE_DETECTOR_H
+#define OPENCV_FACE_DETECTOR_H
 #include <lms/datamanager.h>
 #include <lms/module.h>
 #include <lms/type/module_config.h>
 #include <lms/imaging/image.h>
+
 #include "opencv2/objdetect.hpp"
 #include "opencv2/videoio.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include <cstring>
+#include "opencv_utils.h"
 
 
 namespace lms_opencv {
@@ -17,6 +19,7 @@ class FaceDetector : public lms::Module {
 public:
 
     const lms::imaging::Image *input;
+    cv_utils::ImageWithFaces *iFaces;
 
     bool initialize();
     bool deinitialize();
@@ -29,3 +32,4 @@ public:
 };
 
 }  // namespace lms_opencv
+#endif

@@ -1,4 +1,4 @@
 #if MODULES is set, only the given directories will be compiled 
-set(MODULES ueye_importer opencv_face_detector camera_importer image_converter)
+#set(MODULES ueye_importer opencv_face_detector opencv_face_recognizer opencv_face_logger camera_importer image_converter)
 #if N_MODULES is set, all directories except the given once
-#set(N_MODULES )
+set(N_MODULES opencv_line_detector opencv_box_detector opencv_finger_detector)

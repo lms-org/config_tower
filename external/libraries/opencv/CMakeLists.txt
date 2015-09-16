@@ -8,6 +8,7 @@ set ( SOURCES
 )
 
 set (HEADERS
+ "include/opencv_utils.h"
 )
 
 add_library (opencv_binding SHARED ${SOURCES} ${HEADERS})
