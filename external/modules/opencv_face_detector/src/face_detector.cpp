@@ -38,14 +38,23 @@ bool FaceDetector::cycle () {
             return true;
         }else{
             //-- 3. Apply the classifier to the frame
-            detectAndDisplay( frame );
+            //detect( frame );
+            displayImage(frame);
         }
     return true;
 }
 
+void FaceDetector::displayImage(cv::Mat frame){
+    //TODO can't find the cvGetWindow-func...
+    //if(cv::getGa)
+    //cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
+    imshow(window_name, frame );
+}
+
 /** @function detectAndDisplay */
-void FaceDetector::detectAndDisplay( cv::Mat frame ){
+void FaceDetector::detect( cv::Mat frame ){
     using namespace cv;
+
     std::vector<Rect> faces;
     Mat frame_gray;
 
@@ -73,7 +82,6 @@ void FaceDetector::detectAndDisplay( cv::Mat frame ){
             circle( frame, eye_center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
         }
     }
-    //-- Show what you got
-    imshow( window_name, frame );
+
 }
 }

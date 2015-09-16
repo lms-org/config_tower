@@ -23,7 +23,9 @@ public:
 
     bool cycle();
 
-    void detectAndDisplay( cv::Mat frame );
+    void detect( cv::Mat frame );
+
+    void displayImage(cv::Mat frame);
 };
 
 }  // namespace lms_opencv
