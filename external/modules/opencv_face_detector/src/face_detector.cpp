@@ -19,6 +19,9 @@ bool FaceDetector::initialize(){
     std::string configDir = lms::Framework::configsDirectory;
     if( !face_cascade.load(configDir+"/"+ face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
     if( !eyes_cascade.load(configDir+"/"+ eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
+
+    cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
+
     return true;
 }
 
@@ -28,21 +31,18 @@ bool FaceDetector::deinitialize() {
 
 bool FaceDetector::cycle () {
 
-    cv::Mat frame;
-    convertImage(frame,input);
+    logger.warn() << "cycle: " << input->format();
+
+    cv::Mat frame = input->convertToOpenCVMat();
     //TODO convert image to opencv image
         if( frame.empty() ){
-            logger.info(" --(!) No captured frame!");
+            logger.warn() << "No captured frame!";
             return true;
         }else{
             //-- 3. Apply the classifier to the frame
             detectAndDisplay( frame );
         }
     return true;
-}
-
-void FaceDetector::convertImage(cv::Mat output,const lms::imaging::Image *input){
-    output = input->convertToOpenCVMat();
 }
 
 /** @function detectAndDisplay */

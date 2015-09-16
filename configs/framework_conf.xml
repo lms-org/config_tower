@@ -4,12 +4,22 @@
 	</execution>
 	<modulesToEnable>
 		<module logLevel="WARN">camera_importer</module>
+        <module logLevel="INFO">image_converter</module>
 		<module logLevel="WARN">opencv_face_detector</module>
 	</modulesToEnable>
 	<module>
 		<name>camera_importer</name>
 		<config src="camera_importer.lconf"/>
+        <channelMapping from="IMAGE" to="CAMERA_IMAGE" />
 	</module>
+    <module>
+        <name>image_converter</name>
+        <channelMapping from="INPUT_IMAGE" to="CAMERA_IMAGE" />
+        <channelMapping from="OUTPUT_IMAGE" to="IMAGE" />
+        <config>
+            <output_format>GREY</output_format>
+        </config>
+    </module>
 	<module>
 		<name>opencv_face_detector</name>
 	    <channelMapping from="IMAGE" to="IMAGE"/>
