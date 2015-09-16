@@ -1,5 +1,5 @@
 #if LIBRARIES is set, only the given directories will be compiled 
-set(LIBRARIES imaging math_lib)
+#set(LIBRARIES imaging math_lib)
 #if N_LIBRARIES is set, all directories except
 #set(N_LIBRARIES )
 #if COMPILE_AT_FIRST compiles those libs at first

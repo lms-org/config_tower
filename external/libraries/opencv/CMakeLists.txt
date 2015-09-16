@@ -1,12 +1,14 @@
+# Find independently installed OpenCV libraries
+
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+
 set ( SOURCES
+ "foo.cpp"
 )
 
 set (HEADERS
 )
 
-#TODO create opencv flag
-#TODO how to bind opencv?
-#include_directories("include")
-
-#add_library (opencv SHARED ${SOURCES} ${HEADERS})
-#target_link_libraries (imaging PRIVATE lmscore math_lib)
+add_library (opencv_binding SHARED ${SOURCES} ${HEADERS})
+target_link_libraries (opencv_binding PUBLIC ${OpenCV_LIBS})
