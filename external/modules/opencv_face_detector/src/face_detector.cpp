@@ -49,9 +49,9 @@ bool FaceDetector::cycle () {
 void FaceDetector::detectAndDisplay( cv::Mat frame ){
     using namespace cv;
     std::vector<Rect> faces;
-    Mat frame_gray;
+    Mat frame_gray = frame;
 
-    cvtColor( frame, frame_gray, COLOR_BGR2GRAY );
+    //cvtColor( frame, frame_gray, COLOR_YUV2GRAY_YUYV );
     equalizeHist( frame_gray, frame_gray );
 
     //-- Detect faces
@@ -77,5 +77,6 @@ void FaceDetector::detectAndDisplay( cv::Mat frame ){
     }
     //-- Show what you got
     imshow( window_name, frame );
+    waitKey(1);
 }
 }
