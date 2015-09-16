@@ -41,10 +41,7 @@ bool FaceDetector::cycle () {
 }
 
 void FaceDetector::convertImage(cv::Mat output,const lms::imaging::Image *input){
-    int width = input->width();
-    int height = input->height();
-
-    output(cv::Size(width,height),CV_8UC1,input->data(),cv::Mat::AUTO_STEP);
+    output = input->convertToOpenCVMat();
 }
 
 /** @function detectAndDisplay */
