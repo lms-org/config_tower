@@ -14,5 +14,4 @@
 		<name>opencv_face_detector</name>
 	    <channelMapping from="IMAGE" to="IMAGE"/>
 	</module>
-	<include src="basis.xml" />
 </framework>

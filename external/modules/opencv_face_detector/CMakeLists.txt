@@ -1,9 +1,10 @@
 set ( SOURCES
-	"src/face_detector.cpp"
+    "src/face_detector.cpp"
+    "src/interface.cpp"
 )
 
 set (HEADERS
-	"include/face_detector.h"
+    "include/face_detector.h"
 )
 
 include_directories("include")

@@ -1,7 +1,7 @@
-#include <ueye_importer.h>
+#include "face_detector.h"
 
 extern "C" {
 void* getInstance () {
-    return new lms_ueye_importer::UeyeImporter();
+    return new lms_opencv::FaceDetector();
 }
 }
