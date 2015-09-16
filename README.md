@@ -3,9 +3,12 @@
 config-repo for trying out opencv. Execute opencv.sh to install opencv on ubuntu
 
 ### Installation
+
+Using openCV3.0.0 is recommended! You also need [opencv_contrib](https://github.com/Itseez/opencv_contrib)
 * [OpenCV 3.0.0 on Ubuntu 14.04](http://rodrigoberriel.com/2014/10/installing-opencv-3-0-0-on-ubuntu-14-04/)
 * [OpenCV on Ubuntu 10.04](http://docs.opencv.org/doc/tutorials/introduction/linux_install/linux_install.html)
 * [OpenCV on Ubuntu < 14.10](https://help.ubuntu.com/community/OpenCV)
+
 
 Restart after installation!
 If you are adding opencv to an existing project delete the build-folder and rebuild from scratch
