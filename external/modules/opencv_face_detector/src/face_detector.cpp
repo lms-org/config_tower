@@ -17,11 +17,9 @@ namespace lms_opencv {
 bool FaceDetector::initialize(){
     input = datamanager()->readChannel<lms::imaging::Image>(this,"IMAGE");
     std::string configDir = lms::Framework::configsDirectory;
-    if( !face_cascade.load(configDir+"/"+ face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
-    if( !eyes_cascade.load(configDir+"/"+ eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
-
+    if( !face_cascade.load(configDir+"/"+ face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return false; };
+    if( !eyes_cascade.load(configDir+"/"+ eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return false; };
     cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
-
     return true;
 }
 
@@ -40,14 +38,28 @@ bool FaceDetector::cycle () {
             return true;
         }else{
             //-- 3. Apply the classifier to the frame
-            detectAndDisplay( frame );
+            detect(frame);
+            displayImage(frame);
         }
     return true;
 }
 
-/** @function detectAndDisplay */
-void FaceDetector::detectAndDisplay( cv::Mat frame ){
+void FaceDetector::displayImage(cv::Mat frame){
+    //TODO can't find the cvGetWindow-func...
+    //if(cv::getGa)
+    //cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
+    logger.warn("cols: ")<<"COLS,ROWS:"<<frame.cols <<","<<frame.rows;
+    cv::imshow(window_name, frame );
+    cv::waitKey(1);
+}
+
+/**
+ * @function detectAndDisplay
+ * frame should be a grey image!
+*/
+void FaceDetector::detect( cv::Mat frame ){
     using namespace cv;
+
     std::vector<Rect> faces;
     Mat frame_gray = frame;
 
@@ -75,8 +87,5 @@ void FaceDetector::detectAndDisplay( cv::Mat frame ){
             circle( frame, eye_center, radius, Scalar( 255, 0, 0 ), 4, 8, 0 );
         }
     }
-    //-- Show what you got
-    imshow( window_name, frame );
-    waitKey(1);
 }
 }
