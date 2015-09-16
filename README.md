@@ -8,7 +8,7 @@ config-repo for trying out opencv. Execute opencv.sh to install opencv on ubuntu
 * [OpenCV on Ubuntu < 14.10](https://help.ubuntu.com/community/OpenCV)
 
 Restart after installation!
-If you are adding opencv to an existing project delete the build-folder if any errors occur
+If you are adding opencv to an existing project delete the build-folder and rebuild from scratch
 
 ###TODO
  * convert Image from [imaging](github.com/lms-org/imaging) into opencv image
