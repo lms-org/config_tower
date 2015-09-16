@@ -5,9 +5,7 @@
 #include "lms/module.h"
 #include "opencv_utils.h"
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/contrib/contrib.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/face.hpp"
 
 class OpencvFaceRecognizer : public lms::Module {
 public:
@@ -16,8 +14,8 @@ public:
     bool cycle();
 
 private:
-    cv::Ptr<cv::FaceRecognizer> model;
-    const cv_utils::ImageWithFaces iFaces;
+    cv::Ptr<cv::face::FaceRecognizer> model;
+    const cv_utils::ImageWithFaces *iFaces;
     void train();
 };
 

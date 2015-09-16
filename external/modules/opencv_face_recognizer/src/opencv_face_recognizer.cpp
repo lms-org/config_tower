@@ -20,13 +20,13 @@ bool OpencvFaceRecognizer::initialize() {
     //
     //      cv::createEigenFaceRecognizer(0, 123.0);
     //
-    model = cv::createEigenFaceRecognizer();
+    model = cv::face::createEigenFaceRecognizer();
     iFaces = datamanager()->readChannel<cv_utils::ImageWithFaces>(this,"FACES");
     return true;
 }
 
 void OpencvFaceRecognizer::train(){
-    std::vector<Mat> images;
+    std::vector<cv::Mat> images;
     std::vector<int> labels;
     //TODO load images/labels
 
@@ -44,15 +44,15 @@ bool OpencvFaceRecognizer::deinitialize() {
 }
 
 bool OpencvFaceRecognizer::cycle() {
-    if(iFaces.faces.size() == 0){
+    if(iFaces->faces.size() == 0){
         logger.debug("cycle")<<"no faces given to look for";
         return true;
     }
 
     int predictedLabel = -1;
     double confidence = 0.0;
-    for(cv::Rect &rect:iFaces.faces){
-        cv::Mat testSample(iFaces.image->convertToOpenCVMat(),rect);
+    for(const cv::Rect &rect:iFaces->faces){
+        cv::Mat testSample(iFaces->image->convertToOpenCVMat(),rect);
         model->predict(testSample, predictedLabel, confidence);
     }
     return true;
