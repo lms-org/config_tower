@@ -11,17 +11,21 @@ Using openCV3.0.0 is recommended! You also need [opencv_contrib](https://github.
 
 
 Restart after installation!
-If you are adding opencv to an existing project delete the build-folder and rebuild from scratch
-To install it call:
-* cmake -DOPENCV_EXTRA_MODULES_PATH=/home/phibedy/opencv/opencv_contrib/modules -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
+If you are adding opencv to an existing project delete the build-folder and rebuild from scratch.
+
+To install opencv_contrib:
+* cmake -DOPENCV_EXTRA_MODULES_PATH=<opencv_contrib>/modules -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
 * make -j $(nproc)
 * sudo make install
+* 
+###What's already done:
+ * convert Image from [imaging](github.com/lms-org/imaging) into opencv image (Done)
+ * face detection: http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0 (Done)
 
 ###TODO
- * convert Image from [imaging](github.com/lms-org/imaging) into opencv image
  * face
-   * detection: http://docs.opencv.org/master/d7/d8b/tutorial_py_face_detection.html#gsc.tab=0 (Done)
+   * save faces (In progress)
    * tracking: https://www.youtube.com/watch?v=WfdYYNamHZ8
-   * recognition: http://docs.opencv.org/modules/contrib/doc/facerec/facerec_tutorial.html
+   * recognition: http://docs.opencv.org/modules/contrib/doc/facerec/facerec_tutorial.html (In progress)
  * line-detection: http://docs.opencv.org/modules/imgproc/doc/feature_detection.html?highlight=houghlines
  * finger-detection: https://www.youtube.com/watch?v=o3LSOq6OC4I
