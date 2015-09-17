@@ -15,6 +15,7 @@ public:
 
 private:
     const cv_utils::ImageWithFaces *iFaces;
+    int facesSaved;
 };
 
 #endif // OPENCV_FACE_LOGGER_H

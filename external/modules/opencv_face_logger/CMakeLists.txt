@@ -10,4 +10,4 @@ set(HEADERS
 include_directories("include")
 
 add_library(opencv_face_logger MODULE ${SOURCES} ${HEADERS})
-target_link_libraries(opencv_face_logger PRIVATE lmscore opencv_binding)
+target_link_libraries(opencv_face_logger PRIVATE lmscore opencv_binding imaging)

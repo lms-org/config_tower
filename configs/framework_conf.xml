@@ -6,7 +6,8 @@
 		<module logLevel="WARN">camera_importer</module>
         <module logLevel="INFO">image_converter</module>
 		<module logLevel="WARN">opencv_face_detector</module>
-                <module>opencv_face_recognizer</module>
+                <module logLevel="DEBUG">opencv_face_logger</module>
+                <!--module>opencv_face_recognizer</module-->
 	</modulesToEnable>
 	<module>
 		<name>camera_importer</name>
@@ -27,6 +28,9 @@
     </module>
 	<module>
 		<name>opencv_face_detector</name>
-	    <channelMapping from="IMAGE" to="IMAGE"/>
+                <channelMapping from="IMAGE" to="IMAGE"/>
 	</module>
+        <module>
+                <name>opencv_face_logger</name>
+        </module>
 </framework>
