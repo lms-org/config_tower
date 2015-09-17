@@ -60,9 +60,9 @@ bool OpencvBlobDetector::cycle() {
             if(image->format() == lms::imaging::Format::BGRA){
                 int alphaMax = config->get<int>("alphaMax",255);
                 int alphaMin = config->get<int>("alphaMin",0);
-                cv::inRange(image->convertToOpenCVMat(),cv::Scalar(blueMin,redMin,greenMin,alphaMin),cv::Scalar(blueMax,redMax,greenMax,alphaMax),toSearch);
+                cv::inRange(image->convertToOpenCVMat(),cv::Scalar(blueMin,greenMin,redMin,alphaMin),cv::Scalar(blueMax,greenMax,redMax,alphaMax),toSearch);
             }else{
-                cv::inRange(image->convertToOpenCVMat(),cv::Scalar(blueMin,redMin,greenMin),cv::Scalar(blueMax,redMax,greenMax),toSearch);
+                cv::inRange(image->convertToOpenCVMat(),cv::Scalar(redMin,greenMin,blueMin),cv::Scalar(redMax,greenMax,blueMax),toSearch);
             }
         }else if(image->format() == lms::imaging::Format::GREY){
             cv::inRange(image->convertToOpenCVMat(),cv::Scalar(config->get<int>("greyMin",0)),cv::Scalar(config->get<int>("greyMax",0)),toSearch);
