@@ -3,12 +3,13 @@
 		<clock enabled="true" unit="hz" value="100" />
 	</execution>
 	<modulesToEnable>
-		<module logLevel="WARN">camera_importer</module>
-        <module logLevel="INFO">image_converter</module>
-        <module logLevel="INFO">image_converter_rgb</module>
-		<module logLevel="WARN">opencv_face_detector</module>
-                <module logLevel="DEBUG">opencv_face_logger</module>
-                <module>opencv_blob_detector</module>
+            <module logLevel="WARN">camera_importer</module>
+            <module logLevel="INFO">image_converter</module>
+            <module logLevel="INFO">image_converter_rgb</module>
+            <module logLevel="WARN">opencv_face_detector</module>
+            <module logLevel="DEBUG">opencv_face_logger</module>
+            <module>opencv_blob_detector</module>
+            <module>opencv_face_recognizer</module>
 	</modulesToEnable>
 	<module>
 		<name>camera_importer</name>
@@ -17,7 +18,9 @@
 	</module>
         <module>
             <name>opencv_face_recognizer</name>
-            <channelMapping from="IMAGE" to="CAMERA_IMAGE" />
+            <config>
+                <images>faces/faces.csv</images>
+            </config>
         </module>
         <module>
             <name>opencv_blob_detector</name>

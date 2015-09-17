@@ -4,6 +4,7 @@
 #include "lms/datamanager.h"
 #include "lms/module.h"
 #include "opencv_utils.h"
+#include "lms/type/module_config.h"
 
 #include "opencv2/face.hpp"
 
@@ -14,9 +15,12 @@ public:
     bool cycle();
 
 private:
+    const lms::type::ModuleConfig* config;
     cv::Ptr<cv::face::FaceRecognizer> model;
     const cv_utils::ImageWithFaces *iFaces;
     void train();
+    void read_csv(const std::string& filename, std::vector<cv::Mat>& images, std::vector<int>& labels, char separator = ';');
+    void prepareImage(int width, int height, cv::Mat input, cv::Mat output);
 };
 
 #endif // OPENCV_FACE_RECOGNIZER_H
