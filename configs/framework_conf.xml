@@ -5,9 +5,10 @@
 	<modulesToEnable>
 		<module logLevel="WARN">camera_importer</module>
         <module logLevel="INFO">image_converter</module>
+        <module logLevel="INFO">image_converter_rgb</module>
 		<module logLevel="WARN">opencv_face_detector</module>
                 <module logLevel="DEBUG">opencv_face_logger</module>
-                <!--module>opencv_face_recognizer</module-->
+                <module>opencv_blob_detector</module>
 	</modulesToEnable>
 	<module>
 		<name>camera_importer</name>
@@ -18,17 +19,33 @@
             <name>opencv_face_recognizer</name>
             <channelMapping from="IMAGE" to="CAMERA_IMAGE" />
         </module>
+        <module>
+            <name>opencv_blob_detector</name>
+            <channelMapping from="IMAGE" to="IMAGE_RGB" />
+            <config>
+                <filterColor>true</filterColor>
+            </config>
+        </module>
     <module>
         <name>image_converter</name>
         <channelMapping from="INPUT_IMAGE" to="CAMERA_IMAGE" />
-        <channelMapping from="OUTPUT_IMAGE" to="IMAGE" />
+        <channelMapping from="OUTPUT_IMAGE" to="IMAGE_GREY" />
         <config>
             <output_format>GREY</output_format>
         </config>
     </module>
+    <module>
+        <name>image_converter_rgb</name>
+        <realName>image_converter</realName>
+        <channelMapping from="INPUT_IMAGE" to="CAMERA_IMAGE" />
+        <channelMapping from="OUTPUT_IMAGE" to="IMAGE_RGB" />
+        <config>
+            <output_format>BGRA</output_format>
+        </config>
+    </module>
 	<module>
 		<name>opencv_face_detector</name>
-                <channelMapping from="IMAGE" to="IMAGE"/>
+                <channelMapping from="IMAGE" to="IMAGE_GREY"/>
 	</module>
         <module>
                 <name>opencv_face_logger</name>

@@ -14,6 +14,11 @@ namespace cv_utils{
         const lms::imaging::Image* image;
         std::vector<cv::Rect> faces;
     };
+
+    struct ImageWithBlobs{
+        const lms::imaging::Image* image;
+        std::vector<cv::KeyPoint> points;
+    };
 }
 
 #endif
