@@ -60,14 +60,15 @@ void OpencvFaceRecognizer::read_csv(const std::string& filename, std::vector<cv:
         if(!path.empty() && !classlabel.empty()) {
             std::string img = lms::Framework::configsDirectory+"/faces/"+ path;
             logger.warn("image: ") <<img;
-            images.push_back(cv::imread(img, 0));
+            images.push_back(prepareImage(cv::imread(img, 0)));
             labels.push_back(std::atoi(classlabel.c_str()));
         }
     }
 }
 
-void OpencvFaceRecognizer::prepareImage(int width, int height, cv::Mat input, cv::Mat output){
+cv::Mat OpencvFaceRecognizer::prepareImage(const cv::Mat& input){
     //TODO saves heads as rectangles -> stretch it!
+    return cv_utils::croppResizeCentered(input,config->get<int>("imageWidth",256),config->get<int>("imageHeight",256));
 }
 
 bool OpencvFaceRecognizer::deinitialize() {
@@ -79,13 +80,11 @@ bool OpencvFaceRecognizer::cycle() {
         logger.debug("cycle")<<"no faces given to look for";
         return true;
     }
-
     int predictedLabel = -1;
     double confidence = 0.0;
     for(const cv::Rect &rect:iFaces->faces){
         cv::Mat testSample(iFaces->image->convertToOpenCVMat(),rect);
-        //model->predict(testSample, predictedLabel, confidence);
-
+        model->predict(testSample, predictedLabel, confidence);
         logger.debug("I found: ")<<predictedLabel;
     }
 

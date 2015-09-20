@@ -20,7 +20,7 @@ private:
     const cv_utils::ImageWithFaces *iFaces;
     void train();
     void read_csv(const std::string& filename, std::vector<cv::Mat>& images, std::vector<int>& labels, char separator = ';');
-    void prepareImage(int width, int height, cv::Mat input, cv::Mat output);
+    cv::Mat prepareImage(const cv::Mat& input);
 };
 
 #endif // OPENCV_FACE_RECOGNIZER_H
