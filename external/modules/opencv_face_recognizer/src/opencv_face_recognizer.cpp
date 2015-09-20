@@ -21,8 +21,17 @@ bool OpencvFaceRecognizer::initialize() {
     //
     //      cv::createEigenFaceRecognizer(0, 123.0);
     //
-    model = cv::face::createEigenFaceRecognizer();
     config = getConfig();
+    std::string recognizer = config->get<std::string>("recognizer","eigen");
+    if(recognizer == "eigen"){
+        model = cv::face::createEigenFaceRecognizer();
+        logger.info("init")<<"using eigenfaces";
+    }else if(recognizer == "fisher"){
+        model = cv::face::createFisherFaceRecognizer();
+        logger.info("init")<<"using fisherfaces";
+    }else{
+        logger.error("init")<<"Invalid recognizer given: "<<recognizer;
+    }
     iFaces = datamanager()->readChannel<cv_utils::ImageWithFaces>(this,"FACES");
     train();
     return true;
@@ -59,7 +68,6 @@ void OpencvFaceRecognizer::read_csv(const std::string& filename, std::vector<cv:
         std::getline(liness, classlabel);
         if(!path.empty() && !classlabel.empty()) {
             std::string img = lms::Framework::configsDirectory+"/faces/"+ path;
-            logger.warn("image: ") <<img;
             cv::imread(img, 0);
             images.push_back(prepareImage(cv::imread(img, 0)));
             labels.push_back(std::atoi(classlabel.c_str()));
@@ -68,7 +76,6 @@ void OpencvFaceRecognizer::read_csv(const std::string& filename, std::vector<cv:
 }
 
 cv::Mat OpencvFaceRecognizer::prepareImage(const cv::Mat& input){
-    //TODO saves heads as rectangles -> stretch it!
     return cv_utils::croppResizeCentered(input,config->get<int>("imageWidth",256),config->get<int>("imageHeight",256));
 }
 
@@ -85,8 +92,12 @@ bool OpencvFaceRecognizer::cycle() {
     double confidence = 0.0;
     for(const cv::Rect &rect:iFaces->faces){
         cv::Mat testSample(iFaces->image->convertToOpenCVMat(),rect);
-        model->predict(prepareImage(testSample), predictedLabel, confidence);
+        testSample = prepareImage(testSample);
+        model->predict(testSample, predictedLabel, confidence);
         logger.debug("I found: ")<<predictedLabel<<" - confidence: "<<confidence;
+
+        cv::imshow("face", testSample );
+        cv::waitKey(1);
     }
 
     return true;
