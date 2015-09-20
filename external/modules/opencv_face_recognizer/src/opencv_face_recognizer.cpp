@@ -29,6 +29,9 @@ bool OpencvFaceRecognizer::initialize() {
     }else if(recognizer == "fisher"){
         model = cv::face::createFisherFaceRecognizer();
         logger.info("init")<<"using fisherfaces";
+    }else if(recognizer == "lbph"){
+        model = cv::face::createLBPHFaceRecognizer();
+        logger.info("init")<<"using LBPH";
     }else{
         logger.error("init")<<"Invalid recognizer given: "<<recognizer;
     }

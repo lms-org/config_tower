@@ -20,7 +20,7 @@
             <name>opencv_face_recognizer</name>
             <config>
                 <images>faces/faces.csv</images>
-                <recognizer>eigen</recognizer>
+                <recognizer>lbph</recognizer>
                 <imageWidth>256</imageWidth>
                 <imageHeight>256</imageHeight>
             </config>
