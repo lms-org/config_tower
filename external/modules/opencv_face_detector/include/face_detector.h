@@ -4,7 +4,7 @@
 #include <lms/module.h>
 #include <lms/type/module_config.h>
 #include <lms/imaging/image.h>
-#include "lms/type/module_config.h"
+#include "lms/module_config.h"
 
 #include "opencv2/objdetect.hpp"
 #include "opencv2/videoio.hpp"
@@ -24,7 +24,7 @@ public:
     bool cycle();
 
 private:
-    const lms::type::ModuleConfig* config;
+    const lms::ModuleConfig* config;
 
     const lms::imaging::Image *input;
     cv_utils::ImageWithFaces *iFaces;

@@ -24,7 +24,7 @@ bool OpencvFaceRecognizer::initialize() {
     model = cv::face::createEigenFaceRecognizer();
     config = getConfig();
     iFaces = datamanager()->readChannel<cv_utils::ImageWithFaces>(this,"FACES");
-    //train();
+    train();
     return true;
 }
 
@@ -60,6 +60,7 @@ void OpencvFaceRecognizer::read_csv(const std::string& filename, std::vector<cv:
         if(!path.empty() && !classlabel.empty()) {
             std::string img = lms::Framework::configsDirectory+"/faces/"+ path;
             logger.warn("image: ") <<img;
+            cv::imread(img, 0);
             images.push_back(prepareImage(cv::imread(img, 0)));
             labels.push_back(std::atoi(classlabel.c_str()));
         }
@@ -84,8 +85,8 @@ bool OpencvFaceRecognizer::cycle() {
     double confidence = 0.0;
     for(const cv::Rect &rect:iFaces->faces){
         cv::Mat testSample(iFaces->image->convertToOpenCVMat(),rect);
-        model->predict(testSample, predictedLabel, confidence);
-        logger.debug("I found: ")<<predictedLabel;
+        model->predict(prepareImage(testSample), predictedLabel, confidence);
+        logger.debug("I found: ")<<predictedLabel<<" - confidence: "<<confidence;
     }
 
     return true;

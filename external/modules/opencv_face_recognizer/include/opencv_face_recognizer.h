@@ -4,7 +4,7 @@
 #include "lms/datamanager.h"
 #include "lms/module.h"
 #include "opencv_utils.h"
-#include "lms/type/module_config.h"
+#include "lms/module_config.h"
 
 #include "opencv2/face.hpp"
 
@@ -15,7 +15,7 @@ public:
     bool cycle();
 
 private:
-    const lms::type::ModuleConfig* config;
+    const lms::ModuleConfig* config;
     cv::Ptr<cv::face::FaceRecognizer> model;
     const cv_utils::ImageWithFaces *iFaces;
     void train();

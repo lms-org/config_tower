@@ -7,8 +7,8 @@
             <module logLevel="INFO">image_converter</module>
             <module logLevel="INFO">image_converter_rgb</module>
             <module logLevel="WARN">opencv_face_detector</module>
-            <module logLevel="DEBUG">opencv_face_logger</module>
-            <module>opencv_blob_detector</module>
+            <module logLevel="WARN">opencv_face_logger</module>
+            <!--module>opencv_blob_detector</module-->
             <module>opencv_face_recognizer</module>
 	</modulesToEnable>
 	<module>

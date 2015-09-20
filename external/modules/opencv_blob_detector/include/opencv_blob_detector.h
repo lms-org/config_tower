@@ -3,7 +3,7 @@
 
 #include <lms/datamanager.h>
 #include <lms/module.h>
-#include "lms/type/module_config.h"
+#include "lms/module_config.h"
 #include "lms/imaging/image.h"
 #include "opencv2/opencv.hpp"
 #include "opencv_utils.h"
@@ -13,7 +13,7 @@ public:
     bool deinitialize();
     bool cycle();
 private:
-    const lms::type::ModuleConfig *config;
+    const lms::ModuleConfig *config;
     //Datachannels
     const lms::imaging::Image* image;
     cv_utils::ImageWithBlobs* iBlobs;

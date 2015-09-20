@@ -17,7 +17,7 @@ bool OpencvFaceLogger::cycle() {
     }
     for(uint i = 0; i < iFaces->faces.size(); i++){
         cv::Mat img(iFaces->image->convertToOpenCVMat(),iFaces->faces[i]);
-        if(cv::imwrite("faces/face_"+std::to_string(facesSaved)+".bmp",img)){
+        if(cv::imwrite("faces/face_"+std::to_string(facesSaved)+".pgm",img)){
             logger.debug("cycle")<<"face successfully logged";
             facesSaved++;
         }else{

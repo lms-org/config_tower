@@ -77,7 +77,6 @@ bool OpencvBlobDetector::cycle() {
     keypoints.clear();
 
     detector->detect(toSearch, keypoints);
-    logger.error("...")<<image->format() << " "<< image->width();
 
     cv::imshow("BLOB", image->convertToOpenCVMat() );
     cv::imshow("BLOB2", toSearch);
