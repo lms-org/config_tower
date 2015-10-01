@@ -7,6 +7,9 @@ namespace lms {
 namespace target {
 
 struct Target {
+    Target():x(0),y(0),valid(false){
+    }
+
     /**
      * @brief Horizontal position of the target
      *
@@ -35,6 +38,7 @@ struct Target {
      * @brief Identifier name
      */
     std::string name;
+    bool valid;
 };
 
 }  // namespace target

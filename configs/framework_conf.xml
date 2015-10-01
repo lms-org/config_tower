@@ -9,12 +9,16 @@
             <module logLevel="WARN">opencv_face_detector</module>
             <!--module logLevel="WARN">opencv_face_logger</module-->
             <!--module>opencv_blob_detector</module-->
-            <module>opencv_face_recognizer</module>
+            <module logLevel="WARN">opencv_face_recognizer</module>
+            <module>opencv_face_to_target</module>
             <module logLevel="DEBUG">to_sense_link</module>
             <module logLevel="DEBUG">usb_sense_link</module>
 	</modulesToEnable>
         <module>
             <name>to_sense_link</name>
+        </module>
+        <module>
+            <name>opencv_face_to_target</name>
         </module>
         <module>
             <name>usb_sense_link</name>

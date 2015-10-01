@@ -8,14 +8,18 @@
 #include "sense_link/datatypes.h"
 #include "sense_link/actuators.h"
 
+#include <target/target.h>
+
 class ToSenseLink : public lms::Module {
 public:
     bool initialize();
     bool deinitialize();
     bool cycle();
 private:
-    const lms::math::vertex2i* angles;
+    lms::target::Target *target;
     sense_link::Actuators* actuators;
+    float servoHor;
+    float servoVert;
 };
 
 #endif // TO_ARDUIONO_H

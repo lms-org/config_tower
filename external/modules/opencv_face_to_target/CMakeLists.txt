@@ -9,4 +9,4 @@ set(HEADERS
 
 include_directories(include)
 add_library(opencv_face_to_target MODULE ${SOURCES} ${HEADERS})
-target_link_libraries(opencv_face_to_target PRIVATE lmscore)
+target_link_libraries(opencv_face_to_target PRIVATE lmscore imaging)
