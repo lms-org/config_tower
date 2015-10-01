@@ -8,7 +8,7 @@
 #include "sense_link/datatypes.h"
 #include "sense_link/actuators.h"
 
-class ToArduiono : public lms::Module {
+class ToSenseLink : public lms::Module {
 public:
     bool initialize();
     bool deinitialize();

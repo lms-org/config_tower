@@ -7,10 +7,22 @@
             <module logLevel="INFO">image_converter</module>
             <module logLevel="INFO">image_converter_rgb</module>
             <module logLevel="WARN">opencv_face_detector</module>
-            <module logLevel="WARN">opencv_face_logger</module>
+            <!--module logLevel="WARN">opencv_face_logger</module-->
             <!--module>opencv_blob_detector</module-->
             <module>opencv_face_recognizer</module>
+            <module logLevel="DEBUG">to_sense_link</module>
+            <module logLevel="DEBUG">usb_sense_link</module>
 	</modulesToEnable>
+        <module>
+            <name>to_sense_link</name>
+        </module>
+        <module>
+            <name>usb_sense_link</name>
+            <config>
+                <actuatorChannels>ACTUATORS</actuatorChannels>
+                <path>/dev/ttyACM0</path>
+            </config>
+        </module>
 	<module>
 		<name>camera_importer</name>
 		<config src="camera_importer.lconf"/>

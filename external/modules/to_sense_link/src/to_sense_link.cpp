@@ -1,8 +1,8 @@
-#include "to_arduiono.h"
+#include "to_sense_link.h"
 #include "lms/math/vertex.h"
 #include <cmath>
 #include <cstdint>
-bool ToArduiono::initialize() {
+bool ToSenseLink::initialize() {
     logger.debug("initialize")<<"start";
     angles = datamanager()->readChannel<lms::math::vertex2i>(this,"ANGLES");
     logger.debug("initialize")<<"completed";
@@ -10,11 +10,11 @@ bool ToArduiono::initialize() {
     return true;
 }
 
-bool ToArduiono::deinitialize() {
+bool ToSenseLink::deinitialize() {
     return true;
 }
 
-bool ToArduiono::cycle() {
+bool ToSenseLink::cycle() {
     static float k = 0;
     k += .1;
     if(k >= 180)
